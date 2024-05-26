@@ -106,7 +106,7 @@ func (t *Task) getOutFileName() string {
 	}
 
 	name := fileName[:pos]
-	outfile := fmt.Sprintf("%s_out%s", name, ext)
+	outfile := fmt.Sprintf("out/%s_out%s", name, ext)
 	return outfile
 }
 
