@@ -10,7 +10,6 @@ var files = [3]string{"assets/sample.txt", "assets/sample.jpg", "assets/sample.p
 
 func main() {
 	var wg sync.WaitGroup
-
 	start := time.Now()
 
 	for _, file := range files {
@@ -19,10 +18,15 @@ func main() {
 			defer wg.Done()
 			task, err := newTask(file)
 			if err != nil {
+				log.Println("unable to find the target file", file)
 				return
 			}
 
-			task.run()
+			err = task.run()
+			if err != nil {
+				log.Println("unable to process", file)
+				return
+			}
 
 		}(file)
 	}
