@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"sync"
 	"testing"
@@ -9,8 +8,6 @@ import (
 
 func BenchmarkTransfer(b *testing.B) {
 	var wg sync.WaitGroup
-
-	files := []string{"sample.txt", "sample.jpg", "sample.pdf"}
 
 	for _, file := range files {
 		wg.Add(1)
@@ -22,7 +19,6 @@ func BenchmarkTransfer(b *testing.B) {
 			}
 
 			task.run()
-			fmt.Println("========================")
 
 			os.Remove(task.getOutFileName())
 		}(file)

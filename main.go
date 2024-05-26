@@ -6,11 +6,12 @@ import (
 	"time"
 )
 
+var files = [3]string{"assets/sample.txt", "assets/sample.jpg", "assets/sample.pdf"}
+
 func main() {
 	var wg sync.WaitGroup
 
 	start := time.Now()
-	files := []string{"assets/sample.txt", "assets/sample.jpg", "assets/sample.pdf"}
 
 	for _, file := range files {
 		wg.Add(1)
