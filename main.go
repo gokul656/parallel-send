@@ -2,11 +2,12 @@ package main
 
 import (
 	"log"
+	"os"
 	"sync"
 	"time"
 )
 
-var files = [3]string{"assets/sample.txt", "assets/sample.jpg", "assets/sample.pdf"}
+var files = [4]string{"assets/sample.txt", "assets/sample.jpg", "assets/sample.pdf", "assets/sample.mkv"}
 
 func main() {
 	var wg sync.WaitGroup
@@ -28,6 +29,7 @@ func main() {
 				return
 			}
 
+			os.Remove(task.getOutFileName())
 		}(file)
 	}
 
